@@ -2,7 +2,7 @@
 NAGE: Not A Good Engine. Written by two first year university students. Hence the title.
 
 ## Dependencies
-  * SFML 2.4.2 (32-bit)
+  * SFML 2.4.2 (32-bit) - make sure you have the static libs.
   * A recent version of Visual Studio (we're using 2017, but 2015 and earlier should work fine)
 
 ## Building on Visual Studio
