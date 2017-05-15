@@ -1,10 +1,14 @@
 #include <iostream>
+#include "Includes/EngineLogger.h"
 #include "SFML/Graphics.hpp"
 
 int main() {
 	sf::RectangleShape rect(sf::Vector2f(50,40));
 
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Test");
+	EngineLogger logger = EngineLogger();
+	logger.Log("test");
+	logger.Log("test", EngineLogger::LogLevel::LOG_INFO);
 	while (window.isOpen()) {
 		sf::Event event;
 		while (window.pollEvent(event)) {
