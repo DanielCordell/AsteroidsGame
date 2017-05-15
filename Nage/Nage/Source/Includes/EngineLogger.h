@@ -21,7 +21,7 @@ public:
 		std::cout << str << std::endl;
 	}
 
-	void Log(std::string str, EngineLogger::LogLevel log_level) {
+	void Log(EngineLogger::LogLevel log_level, std::string str) {
 		std::cout << EngineLogger::LogLevelMessages.at(log_level) << str << std::endl;
 	}
 };
