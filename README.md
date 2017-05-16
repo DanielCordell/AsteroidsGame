@@ -20,11 +20,11 @@ NAGE: Not A Good Engine. Written by two first year university students. Hence th
   ```
   Nage\
   -- SFML-2.x.x
-  ----lib
-  ----include
-  ----[...]
-  --Nage.vcxproj
-  --[...]
+  ---- lib
+  ---- include
+  ---- [...]
+  -- Nage.vcxproj
+  -- [...]
   ```
   * Press F5 and cross your fingers.
 
