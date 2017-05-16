@@ -265,3 +265,5 @@ __pycache__/
 
 # SFML
 /Nage/SFML-2.4.2
+/Nage/Nage/SFML-2.4.2/cmake/Modules
+/Nage/Nage/SFML-2.4.2
