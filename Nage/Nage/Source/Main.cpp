@@ -7,8 +7,7 @@ int main() {
 
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Test");
 
-	EngineLogger logger = EngineLogger();
-	logger.Log(EngineLogger::LogLevel::LOG_INFO, "Renderer successfully initialised.");
+	EngineLogger::Log(EngineLogger::LogLevel::LOG_INFO, "Renderer successfully initialised.");
 
 	while (window.isOpen()) {
 		sf::Event event;

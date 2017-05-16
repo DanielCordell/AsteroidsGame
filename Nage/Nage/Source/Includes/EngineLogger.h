@@ -10,18 +10,20 @@ public:
 		LOG_INFO, LOG_WARNING, LOG_ERROR, LOG_FATAL
 	};
 
-	const std::map<EngineLogger::LogLevel, std::string> LogLevelMessages = {
-		{ EngineLogger::LogLevel::LOG_ERROR, "[Error] " },
-		{ EngineLogger::LogLevel::LOG_FATAL, "[FATAL] " },
-		{ EngineLogger::LogLevel::LOG_WARNING, "[Warning] " },
-		{ EngineLogger::LogLevel::LOG_INFO, "[Info] " }
-	};
+	static std::map<EngineLogger::LogLevel, std::string> LogLevelMessages;
 
-	void Log(std::string str) {
+	static void Log(std::string str) {
 		std::cout << str << std::endl;
 	}
 
-	void Log(EngineLogger::LogLevel log_level, std::string str) {
+	static void Log(EngineLogger::LogLevel log_level, std::string str) {
 		std::cout << EngineLogger::LogLevelMessages.at(log_level) << str << std::endl;
 	}
+};
+
+std::map<EngineLogger::LogLevel, std::string> EngineLogger::LogLevelMessages = {
+	{ EngineLogger::LogLevel::LOG_ERROR, "[Error] " },
+	{ EngineLogger::LogLevel::LOG_FATAL, "[FATAL] " },
+	{ EngineLogger::LogLevel::LOG_WARNING, "[Warning] " },
+	{ EngineLogger::LogLevel::LOG_INFO, "[Info] " }
 };
