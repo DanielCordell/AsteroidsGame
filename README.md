@@ -16,6 +16,15 @@ NAGE: Not A Good Engine. Written by two first year university students. Hence th
 ### Building on Visual Studio
   * Clone the project however you desire (using GitHub for Visual Studio is the easiest way)
   * Open the solution within the NAGE folder.
-  * In the Properties window for the project, add the includes `(C++ / General)` and additional libraries `(Linker / General)` directories for your installation of SFML.
+  * In the project folder (where the `*.vcxproj` files are) copy your SFML distribution so that your file structure looks like this:
+  ```
+  Nage\
+  -- SFML-2.x.x
+  ----lib
+  ----include
+  ----[...]
+  --Nage.vcxproj
+  --[...]
+  ```
   * Press F5 and cross your fingers.
 
