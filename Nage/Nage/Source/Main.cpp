@@ -1,13 +1,17 @@
-#include <iostream>
-#include "Includes/EngineLogger.h"
 #include "SFML/Graphics.hpp"
+#include "Includes/EngineLogger.h"
+#include "Includes/IResourceManager.h"
 
 int main() {
-	sf::RectangleShape rect(sf::Vector2f(50,40));
-
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Test");
 
-	EngineLogger::Log(EngineLogger::LogLevel::LOG_INFO, "Renderer successfully initialised.");
+	EngineLogger::Log(EngineLogger::LOG_INFO, "Startup Initialised");
+
+	EngineLogger::Log(EngineLogger::LOG_INFO, "Testing TextureManager");
+	IResourceManager<sf::Texture, IDTexture> TexManager;
+	TexManager.Load(IDTexture::one,"Resources/test.png");
+
+
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -22,7 +26,6 @@ int main() {
 		}
 
 		window.clear(sf::Color::Black);
-		window.draw(rect);
 		window.display();
 
 	}
