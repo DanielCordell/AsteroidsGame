@@ -130,9 +130,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
+    <None Include="Resources\Test.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Test.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\Test.wav" />
+    <Media Include="Resources\Test2.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

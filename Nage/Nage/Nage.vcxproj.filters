@@ -32,10 +32,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
+    <None Include="Resources\Test.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Test.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Test.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\Test.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Resources\Test2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>
