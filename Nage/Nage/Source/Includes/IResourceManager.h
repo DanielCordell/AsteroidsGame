@@ -3,17 +3,26 @@
 #include <memory>
 
 #include "SFML/Audio/Music.hpp"
+#include "SFML/Graphics/Shader.hpp"
+
 
 template <class T, typename  ID>
 class IResourceManager {
-private:
 	std::unordered_map<ID,std::shared_ptr<T>> Map;
+	T defResoure = T();
 public:
+	IResourceManager(T def) {
+		defResource = def;
+	}
+
+
+
 	T& Get(ID id) {
 		auto data = Map.find(id);
 		if (data == Map.end()) throw std::runtime_error("Error in ResourceHolder of Type: " + std::string(typeid(T).name()) + " - Trying to get Resource of ID " + std::to_string(int(id)) + " that does not exist");
 		return *(data->second);
 	}
+
 	void Load(ID id, const std::string& filename) {
 		if (Map.find(id) != Map.end())
 			throw std::runtime_error("Error in ResourceHolder of Type: " + std::string(typeid(T).name()) + " - Trying to load Resource with ID that already exists " + std::to_string(int(id)) + " while loading" + filename);
@@ -22,21 +31,33 @@ public:
 			throw std::runtime_error("Error in ResourceHolder of Type: " + std::string(typeid(T).name()) + " - Failed to Load " + filename);
 		Map.insert(std::make_pair(id, resource));
 	}
-	template <typename Parameter>
-	void Load(ID id, const std::string& filename, Parameter& secondParam) {
+
+	template <typename Param>
+	void Load(ID id, const std::string& filename, Param secondParam) {
 		if (Map.find(id) != Map.end())
-			throw std::runtime_error("Error in ResourceHolder of Type: " + std::string(typeid(sf::Shader).name()) + " - Trying to load Resource with ID that already exists " + std::to_string(int(id)) + " while loading" + filename);
-		auto resource = std::make_shared<sf::Shader>();
+			throw std::runtime_error("Error in ResourceHolder of Type: " + std::string(typeid(T).name()) + " - Trying to load Resource with ID that already exists " + std::to_string(int(id)) + " while loading" + filename);
+		auto resource = std::make_shared<T>();
 
 
 		if (!resource->loadFromFile(filename, secondParam))
-			throw std::runtime_error("Error in ResourceHolder of Type: " + std::string(typeid(sf::Shader).name()) + " - Failed to Load " + filename);
+			throw std::runtime_error("Error in ResourceHolder of Type: " + std::string(typeid(T).name()) + " - Failed to Load " + filename);
 		Map.insert(std::make_pair(id, resource));
 
 	}
+	
+	
+	void Load(ID id, T data) {
+		if (Map.find(id) != Map.end()) {
+			char str[17];
+			sprintf(str, "%p", &data);
+			throw std::runtime_error("Error in ResourceHolder of Type: " + std::string(typeid(T).name()) + " - Trying to load Resource with ID that already exists " + std::to_string(int(id)) + " while loading data from " + str);
+		}
+		auto resource = std::make_shared<T>(data);
+		Map.insert(std::make_pair(id, resource));
+	}
 };
 
-enum class IDSound {one};
+enum class IDSound { one };
 enum class IDTexture { one };
 enum class IDShader { one };
 enum class IDMusic { one };
