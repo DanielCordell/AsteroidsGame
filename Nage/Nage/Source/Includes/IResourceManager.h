@@ -82,6 +82,7 @@ inline void IResourceManager<sf::Music, IDMusic>::Load(IDMusic id, const std::st
 template <>
 inline IResourceManager<sf::Texture, IDTexture>::IResourceManager() {
 	// Defining Default Texture
+	// I'm so sorry
 	defResource = std::make_shared<sf::Texture>();
 	sf::Image image;
 	unsigned char x[16]{ 0, 0, 0, 255, 172, 0, 172, 255, 172, 0, 172, 255, 0, 0, 0, 255 };
