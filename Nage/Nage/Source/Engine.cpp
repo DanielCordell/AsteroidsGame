@@ -17,7 +17,7 @@ Engine::Engine() {
 	tex.display();
 
 	//Defining Default Resources
-	TexManager = IResourceManager<sf::Texture, IDTexture>(std::make_shared<sf::Texture>(tex.getTexture()));
+	TexManager = IResourceManager<sf::Texture, IDTexture>(tex.getTexture());
 	SoundManager = IResourceManager<sf::SoundBuffer, IDSound>();
 	MusicManager = IResourceManager<sf::Music, IDMusic>();
 	FontManager = IResourceManager<sf::Font, IDFont>();

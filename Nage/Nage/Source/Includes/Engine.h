@@ -21,7 +21,7 @@ public:
 private:
 	sf::RenderWindow window;
 
-	// std::vector<std::shared_ptr<IGameState>> _States
+	// std::vector<std::shared_ptr<IGameState>> States
 
 
 

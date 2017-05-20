@@ -21,8 +21,8 @@ public:
 		defResource = std::make_shared<T>();
 	}
 
-	IResourceManager(std::shared_ptr<T> def) {
-		defResource = def;
+	IResourceManager(T def) {
+		defResource = std::make_shared<T>(def);
 	}
 
 	T& Get(ID id) {
