@@ -56,3 +56,5 @@ const int DiceRoller::Sum(std::vector<unsigned int> rolls)
 	for (int roll : rolls) sum += roll;
 	return sum;
 }
+
+std::default_random_engine DiceRoller::generator;

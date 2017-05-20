@@ -1,7 +1,7 @@
 #include "SFML/Graphics.hpp"
 #include "Includes/EngineLogger.h"
 #include "Includes/Engine.h"
-#include <windows.h>
+#include "Includes/DiceRoller.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Test");
@@ -23,9 +23,6 @@ int main() {
 			}
 		}
 		sf::Sprite sprite;
-		sprite.setTexture(engine.TexManager.Get(IDTexture::one));
-		window.clear(sf::Color::Black);
-		window.draw(sprite);
 		window.display();
 	}
 }
