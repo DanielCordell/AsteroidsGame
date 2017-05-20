@@ -38,6 +38,9 @@
     <ClInclude Include="Source\Includes\ResourceTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Includes\OS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
@@ -45,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\missing.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

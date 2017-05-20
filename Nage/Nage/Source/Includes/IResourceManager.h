@@ -2,8 +2,13 @@
 #include <unordered_map>
 #include <memory>
 
+#include "SFML/Graphics/Sprite.hpp"
+#include "SFML/Graphics/RenderTexture.hpp"
+
+
 #include "ResourceTypes.h"
 #include "EngineLogger.h"
+#include "OS.h"
 
 
 enum class IDSound { one };
@@ -19,10 +24,6 @@ class IResourceManager {
 public:
 	IResourceManager() {
 		defResource = std::make_shared<T>();
-	}
-
-	IResourceManager(T def) {
-		defResource = std::make_shared<T>(def);
 	}
 
 	T& Get(ID id) {
@@ -63,19 +64,6 @@ public:
 		Map.insert(std::make_pair(id, resource));
 
 	}
-	
-	
-	void Load(ID id, std::shared_ptr<T> data) {
-		std::shared_ptr<T> resource;
-		if (Map.find(id) != Map.end()) {
-			char str[17];
-			sprintf(str, "%p", &data);
-			EngineLogger::Log(EngineLogger::LOG_ERROR, "Error in ResourceHolder of Type: " + std::string(typeid(T).name()) + " - Trying to load Resource with ID that already exists " + std::to_string(int(id)) + " while loading data from " + str);
-			resource = defResource;
-		}
-		resource = data;
-		Map.insert(std::make_pair(id, resource));
-	}
 };
 
 template <>
@@ -90,4 +78,38 @@ inline void IResourceManager<sf::Music, IDMusic>::Load(IDMusic id, const std::st
 		resource = defResource;
 	}
 	Map.insert(std::make_pair(id, resource));
+}
+template <>
+inline IResourceManager<sf::Texture, IDTexture>::IResourceManager() {
+	// Defining Default Texture
+	defResource = std::make_shared<sf::Texture>();
+	sf::Image image;
+	unsigned char x[16]{ 0, 0, 0, 255, 172, 0, 172, 255, 172, 0, 172, 255, 0, 0, 0, 255 };
+	image.create(2, 2, x);
+	sf::Texture tex;
+	tex.loadFromImage(image);
+	sf::Sprite sprite(tex);
+	sprite.setScale(64, 64);
+	sf::RenderTexture rt;
+	rt.create(128, 128);
+	rt.draw(sprite);
+	rt.display();
+	tex = rt.getTexture();
+	defResource->loadFromImage(tex.copyToImage());
+}
+
+
+template <>
+inline IResourceManager<sf::Shader, IDShader>::IResourceManager() {
+	// Defining Default Shader
+	defResource = std::make_shared<sf::Shader>();
+	defResource->loadFromMemory("void main(){}", sf::Shader::Fragment);
+}
+
+
+template <>
+inline IResourceManager<sf::Font, IDFont>::IResourceManager() {
+	// Defining Default Font
+	defResource = std::make_shared<sf::Font>();
+	defResource->loadFromFile(FONTPATH);
 }

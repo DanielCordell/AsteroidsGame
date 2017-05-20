@@ -129,6 +129,7 @@
     <ClInclude Include="Source\Includes\Engine.h" />
     <ClInclude Include="Source\Includes\EngineLogger.h" />
     <ClInclude Include="Source\Includes\IResourceManager.h" />
+    <ClInclude Include="Source\Includes\OS.h" />
     <ClInclude Include="Source\Includes\ResourceTypes.h" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
     <None Include="Resources\Test.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\missing.png" />
     <Image Include="Resources\Test.png" />
   </ItemGroup>
   <ItemGroup>

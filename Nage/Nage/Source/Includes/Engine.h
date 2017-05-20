@@ -24,7 +24,7 @@ private:
 	// std::vector<std::shared_ptr<IGameState>> States
 
 
-
+public:
 	// Resource Managers
 	IResourceManager<sf::Texture, IDTexture>	TexManager;
 	IResourceManager<sf::SoundBuffer, IDSound>	SoundManager;
