@@ -1,5 +1,5 @@
 # NAGE
-NAGE: Not A Good Engine. Written by two first year university students. Hence the title.
+NAGE: Not A Good Engine. Written by a first year university student (and his friends). Hence the title.
 
 ## Current features
   * It draws a rectangle
