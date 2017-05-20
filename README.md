@@ -1,8 +1,9 @@
 # NAGE
-NAGE: Not A Good Engine. Written by two first year university students. Hence the title.
+NAGE: Not A Good Engine. Written by a first year university student (and his friends). Hence the title.
 
 ## Current features
-  * It draws a rectangle
+  * Resource Handlers for Music/Textures/Sound/Shaders/Fonts
+  * Default Texture if a texture does not exist (Defaults of music and sound will just be empty, will implement default font and shader later).
   
 ## Planned features
   * 2D top-down tile-based perspective.
