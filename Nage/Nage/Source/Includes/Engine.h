@@ -1,11 +1,13 @@
 #pragma once
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "IResourceManager.h"
 #include <SFML/Audio/SoundBuffer.hpp>
 #include <SFML/Graphics/Font.hpp>
 
+#include "IResourceManager.h"
+
 class Engine {
 public:
+	Engine();
 	bool Init(Engine&);
 	void Cleanup();
 

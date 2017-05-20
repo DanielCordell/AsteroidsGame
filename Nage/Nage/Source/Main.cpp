@@ -1,10 +1,14 @@
 #include "SFML/Graphics.hpp"
 #include "Includes/EngineLogger.h"
+#include "Includes/Engine.h"
+
 int main() {
 
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Test");
 
 	EngineLogger::Log(EngineLogger::LOG_INFO, "Startup Initialised");
+
+	Engine engine;
 
 	while (window.isOpen()) {
 		sf::Event event;

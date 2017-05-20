@@ -122,12 +122,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Engine.cpp" />
+    <ClCompile Include="Source\EngineLogger.cpp" />
     <ClCompile Include="Source\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Includes\Engine.h" />
     <ClInclude Include="Source\Includes\EngineLogger.h" />
     <ClInclude Include="Source\Includes\IResourceManager.h" />
+    <ClInclude Include="Source\Includes\ResourceTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
