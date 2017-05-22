@@ -1,6 +1,7 @@
 # NAGE
 NAGE: Not A Good Engine. Written by a first year university student. Hence the title.
-Credit: @Toby Jones for creating the base for the Logging Class
+
+Credit: https://github.com/monotron for the logging class foundation (which I had to change a bit, sorry!).
 ## Current features
   * Resource Handlers for Music/Textures/Sound/Shaders/Fonts
   * Default Texture/Font/Shader handling if any files are missing (music and sound just won't play).
