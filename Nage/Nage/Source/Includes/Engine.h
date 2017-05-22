@@ -12,11 +12,11 @@ public:
 	bool Init(Engine&);
 	void Cleanup();
 
-	void Events(Engine&, sf::Time dt);
+	void Events(Engine&);
 
-	void Update(Engine&, sf::Time dt);
+	void Update(Engine&);
 
-	void Draw(Engine&, sf::Time dt);
+	void Draw(Engine&);
 
 	Window& getWindow() { return window; }
 

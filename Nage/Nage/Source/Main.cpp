@@ -10,12 +10,19 @@ int main() {
 	engine.Init(engine);
 
 	sf::Clock clock;
+	sf::Time elapsedTime;
+	float frameTime = 1.0f / 60.0f;
 	while (!engine.getWindow().IsDone()) {
-		sf::Time time(clock.getElapsedTime());
-		engine.Events(engine, time);
-		engine.Update(engine, time);
-		engine.Draw(engine, time);
+		elapsedTime += clock.restart();
+		engine.Events(engine);
+		bool shouldUpdate = elapsedTime.asSeconds() >= frameTime;
+		if (shouldUpdate) {
+			engine.Update(engine);
+			engine.Draw(engine);
+			elapsedTime = sf::Time::Zero;
 		}
+
+	}
 	EngineLogger::Log(EngineLogger::LOG_INFO, "Goodbye!");
 }
 

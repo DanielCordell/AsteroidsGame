@@ -31,17 +31,26 @@ void Engine::Cleanup()
 {
 }
 
-void Engine::Events(Engine& engine, sf::Time dt)
+void Engine::Events(Engine& engine)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5)) { if (!window.IsFullscreen()) window.ToggleFullscreen(); }
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4)) { if (window.IsFullscreen()) window.ToggleFullscreen(); }
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) window.Recreate();
+
+	sf::Event event;
+	while (window.pollEvent(event)) {
+		if (event.type == sf::Event::Resized) window.changeView(event.size.width, event.size.height);
+	}
 }
 
-void Engine::Update(Engine& engine, sf::Time dt)
+void Engine::Update(Engine& engine)
 {
 }
 
-void Engine::Draw(Engine& engine, sf::Time dt)
+void Engine::Draw(Engine& engine)
 {
+	window.DrawStart();
+	sf::Sprite sprite(TexManager.Get(IDTexture::one));
+	window.Draw(sprite);
+	window.DrawEnd();
 }

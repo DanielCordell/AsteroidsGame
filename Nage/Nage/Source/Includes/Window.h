@@ -4,6 +4,7 @@
 #include "SFML/System/Vector2.hpp"
 #include "SFML/Graphics/Drawable.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/Window/Event.hpp"
 
 
 class Window {
@@ -22,6 +23,13 @@ public:
 	void ToggleFullscreen() { isFullscreen = !isFullscreen; }
 	// Needs to call Recreate() for settings to take effect
 	void Resize(sf::Vector2u& size) { windowSize = size; }
+
+	//Change the Viewport (only if resize)
+	void changeView(int width, int height);
+
+	//Standard Pollevent Function
+	bool pollEvent(sf::Event& event) { return window.pollEvent(event); }
+
 
 	const bool IsDone() const { return isDone; }
 	const bool IsFullscreen() const { return isFullscreen; }
