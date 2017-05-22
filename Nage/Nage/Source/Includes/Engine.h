@@ -4,22 +4,24 @@
 #include <SFML/Graphics/Font.hpp>
 
 #include "IResourceManager.h"
+#include "Window.h"
 
 class Engine {
 public:
-	Engine();
+	Engine(sf::String title, sf::Vector2u size);
 	bool Init(Engine&);
 	void Cleanup();
 
+	void Events(Engine&, sf::Time dt);
 
-	void Events(Engine&);
+	void Update(Engine&, sf::Time dt);
 
-	void Update(Engine&);
+	void Draw(Engine&, sf::Time dt);
 
-	void Draw(Engine&);
+	Window& getWindow() { return window; }
 
 private:
-	sf::RenderWindow window;
+	Window window;
 
 	// std::vector<std::shared_ptr<IGameState>> States
 

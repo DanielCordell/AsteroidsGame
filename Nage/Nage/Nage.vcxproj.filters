@@ -27,6 +27,9 @@
     <ClCompile Include="Source\DiceRoller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Includes\Engine.h">
@@ -47,6 +50,9 @@
     <ClInclude Include="Source\Includes\DiceRoller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Includes\Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
@@ -54,9 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Test.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Resources\missing.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

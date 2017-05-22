@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\DiceRoller.cpp" />
     <ClCompile Include="Source\Engine.cpp" />
     <ClCompile Include="Source\EngineLogger.cpp" />
@@ -133,13 +134,13 @@
     <ClInclude Include="Source\Includes\IResourceManager.h" />
     <ClInclude Include="Source\Includes\OS.h" />
     <ClInclude Include="Source\Includes\ResourceTypes.h" />
+    <ClInclude Include="Source\Includes\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />
     <None Include="Resources\Test.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\missing.png" />
     <Image Include="Resources\Test.png" />
   </ItemGroup>
   <ItemGroup>

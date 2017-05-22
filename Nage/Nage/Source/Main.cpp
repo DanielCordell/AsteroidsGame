@@ -1,28 +1,21 @@
 #include "SFML/Graphics.hpp"
 #include "Includes/EngineLogger.h"
 #include "Includes/Engine.h"
-#include "Includes/DiceRoller.h"
 
 int main() {
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "Test");
-
 	EngineLogger::Log(EngineLogger::LOG_INFO, "Startup Initialised");
 
-	Engine engine;
+	sf::Vector2u size = { sf::VideoMode::getFullscreenModes()[0].width, sf::VideoMode::getFullscreenModes()[0].height }; //TODO: Load from Settings
+	Engine engine("Title",size); //TODO: THIS STUFF
 	engine.Init(engine);
 
-	while (window.isOpen()) {
-		sf::Event event;
-		while (window.pollEvent(event)) {
-			switch (event.type) {
-			case sf::Event::Closed:
-				window.close();
-				break;
-			default: 
-				break;
-			}
+	sf::Clock clock;
+	while (!engine.getWindow().IsDone()) {
+		sf::Time time(clock.getElapsedTime());
+		engine.Events(engine, time);
+		engine.Update(engine, time);
+		engine.Draw(engine, time);
 		}
-		sf::Sprite sprite;
-		window.display();
-	}
+	EngineLogger::Log(EngineLogger::LOG_INFO, "Goodbye!");
 }
+

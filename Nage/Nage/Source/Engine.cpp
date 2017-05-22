@@ -2,15 +2,15 @@
 
 #include "Includes/Engine.h"
 #include "Includes/IResourceManager.h"
+#include <SFML/Window/Event.hpp>
 
-Engine::Engine() {
-}
+Engine::Engine(sf::String title, sf::Vector2u size): window(title, size) {}
 
 bool Engine::Init(Engine &)
 {
 
 	//Loading Textures
-	//TexManager.Load(IDTexture::one, "Resources/Test.png");
+	TexManager.Load(IDTexture::one, "Resources/Test.png");
 
 	//Loading Sounds
 	SoundManager.Load(IDSound::one, "Resources/Test.wav");
@@ -31,14 +31,18 @@ void Engine::Cleanup()
 {
 }
 
-void Engine::Events(Engine &)
+void Engine::Events(Engine& engine, sf::Time dt)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5)) {
+		window.ToggleFullscreen();
+		window.Rereate();
+	};
+}
+
+void Engine::Update(Engine& engine, sf::Time dt)
 {
 }
 
-void Engine::Update(Engine &)
-{
-}
-
-void Engine::Draw(Engine &)
+void Engine::Draw(Engine& engine, sf::Time dt)
 {
 }
