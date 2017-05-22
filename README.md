@@ -1,6 +1,6 @@
 # NAGE
-NAGE: Not A Good Engine. Written by a first year university student **_(and his friends)_**. Hence the title.
-
+NAGE: Not A Good Engine. Written by a first year university student. Hence the title.
+Credit: @Toby Jones for creating the base for the Logging Class
 ## Current features
   * Resource Handlers for Music/Textures/Sound/Shaders/Fonts
   * Default Texture/Font/Shader handling if any files are missing (music and sound just won't play).
