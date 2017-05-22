@@ -26,7 +26,7 @@ public:
 	const bool IsDone() const { return isDone; }
 	const bool IsFullscreen() const { return isFullscreen; }
 
-	void Rereate(); // Destroys THEN Creates the window
+	void Recreate(); // Destroys THEN Creates the window
 
 private:
 	// Window Initialisation (should only be called at the start)

@@ -41,7 +41,7 @@ void Window::Destroy() {
 	window.close();
 }
 
-void Window::Rereate() {
+void Window::Recreate() {
 	Destroy();
 	Create();
 }

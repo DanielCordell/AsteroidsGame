@@ -33,10 +33,9 @@ void Engine::Cleanup()
 
 void Engine::Events(Engine& engine, sf::Time dt)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5)) {
-		window.ToggleFullscreen();
-		window.Rereate();
-	};
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5)) { if (!window.IsFullscreen()) window.ToggleFullscreen(); }
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4)) { if (window.IsFullscreen()) window.ToggleFullscreen(); }
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) window.Recreate();
 }
 
 void Engine::Update(Engine& engine, sf::Time dt)
