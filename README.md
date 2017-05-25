@@ -12,8 +12,8 @@ Credit: https://github.com/monotron for the logging class foundation (which I ha
   * Trivial development for the budding game developer.
 
 ### Dependencies
-  * SFML 2.4.2 (32-bit) - make sure you have the static libs.
-  * A recent version of Visual Studio (we're using 2017, but 2015 and earlier should work fine)
+  * SFML 2.4.2 (32-bit) - the project technically links to SFML statically but you can use dynamic if you like (be sure to change the project files to reflect this).
+  * A recent version of Visual Studio (currently using VS 2017, but 2015 and earlier should work fine.)
 
 ### Building on Visual Studio
   * Clone the project however you desire (using GitHub for Visual Studio is the easiest way)
