@@ -35,6 +35,7 @@ void Window::Create() {
 	EngineLogger::Log(EngineLogger::LOG_INFO, "Creating Window");
 	auto style = isFullscreen ? sf::Style::Fullscreen : sf::Style::Resize | sf::Style::Close;
 	window.create(sf::VideoMode(windowSize.x, windowSize.y), windowTitle, style);
+	changeView(windowSize.x, windowSize.y);
 }
 void Window::Destroy() {
 	EngineLogger::Log(EngineLogger::LOG_INFO, "Destroying Window");
@@ -50,21 +51,23 @@ void Window::changeView(int width, int height)
 {
 	EngineLogger::Log(EngineLogger::LOG_INFO, "Adjusting View");
 	sf::View view = window.getView();
-	float windowRatio = width / height;
-	float viewRatio = view.getSize().x / view.getSize().y;
+	std::cout << view.getSize().x << " " << view.getSize().y << std::endl << view.getCenter().x << " " << view.getCenter().y << std::endl;
+	float windowRatio = static_cast<float>(width) / static_cast<float>(height);
+	float viewRatio = static_cast<float>(view.getSize().x) / static_cast<float>(view.getSize().y);
 	float sizeX = 1;
 	float sizeY = 1;
 	float posX = 0;
 	float posY = 0;
 
-	if (windowRatio < viewRatio) {
+	if (windowRatio > viewRatio) {
 		sizeX = viewRatio / windowRatio;
-		posX = (1 - sizeX) / 2.f;
+		posX = (1 - sizeX) / 2.0f;
 	}
 
 	else {
 		sizeY = windowRatio / viewRatio;
-		posY = (1 - sizeY) / 2.f;
+		posY = (1 - sizeY) / 2.0f;
 	}
-	window.setView(sf::View({ posX, posY, sizeX, sizeY }));
+	view.setViewport({ posX,posY,sizeX,sizeY });
+	window.setView(view);
 }
