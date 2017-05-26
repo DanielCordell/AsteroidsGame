@@ -18,11 +18,11 @@ enum class IDMusic { one };
 enum class IDFont { one };
 
 template <class T, typename  ID>
-class IResourceManager {
+class ResourceManager {
 	std::unordered_map<ID,std::shared_ptr<T>> Map;
 	std::shared_ptr<T> defResource;
 public:
-	IResourceManager() {
+	ResourceManager() {
 		defResource = std::make_shared<T>();
 	}
 
@@ -67,7 +67,7 @@ public:
 };
 
 template <>
-inline void IResourceManager<sf::Music, IDMusic>::Load(IDMusic id, const std::string& filename) {
+inline void ResourceManager<sf::Music, IDMusic>::Load(IDMusic id, const std::string& filename) {
 	if (Map.find(id) != Map.end()) {
 		EngineLogger::Log(EngineLogger::LOG_ERROR, "Error in ResourceHolder of Type: " + std::string(typeid(sf::Music).name()) + " - Trying to load Resource with ID that already exists " + std::to_string(int(id)) + " while loading" + filename);
 		return;
@@ -80,7 +80,7 @@ inline void IResourceManager<sf::Music, IDMusic>::Load(IDMusic id, const std::st
 	Map.insert(std::make_pair(id, resource));
 }
 template <>
-inline IResourceManager<sf::Texture, IDTexture>::IResourceManager() {
+inline ResourceManager<sf::Texture, IDTexture>::ResourceManager() {
 	// Defining Default Texture
 	// I'm so sorry
 	defResource = std::make_shared<sf::Texture>();
@@ -101,7 +101,7 @@ inline IResourceManager<sf::Texture, IDTexture>::IResourceManager() {
 
 
 template <>
-inline IResourceManager<sf::Shader, IDShader>::IResourceManager() {
+inline ResourceManager<sf::Shader, IDShader>::ResourceManager() {
 	// Defining Default Shader
 	defResource = std::make_shared<sf::Shader>();
 	defResource->loadFromMemory("void main(){}", sf::Shader::Fragment);
@@ -109,7 +109,7 @@ inline IResourceManager<sf::Shader, IDShader>::IResourceManager() {
 
 
 template <>
-inline IResourceManager<sf::Font, IDFont>::IResourceManager() {
+inline ResourceManager<sf::Font, IDFont>::ResourceManager() {
 	// Defining Default Font
 	defResource = std::make_shared<sf::Font>();
 	defResource->loadFromFile(FONTPATH);

@@ -3,7 +3,7 @@
 #include <SFML/Audio/SoundBuffer.hpp>
 #include <SFML/Graphics/Font.hpp>
 
-#include "IResourceManager.h"
+#include "ResourceManager.h"
 #include "Window.h"
 
 class Engine {
@@ -28,9 +28,9 @@ private:
 
 public:
 	// Resource Managers
-	IResourceManager<sf::Texture, IDTexture>	TexManager;
-	IResourceManager<sf::SoundBuffer, IDSound>	SoundManager;
-	IResourceManager<sf::Music, IDMusic>		MusicManager;
-	IResourceManager<sf::Font, IDFont>			FontManager;
-	IResourceManager<sf::Shader, IDShader>		ShaderManager;
+	ResourceManager<sf::Texture, IDTexture>		TexManager;
+	ResourceManager<sf::SoundBuffer, IDSound>	SoundManager;
+	ResourceManager<sf::Music, IDMusic>			MusicManager;
+	ResourceManager<sf::Font, IDFont>			FontManager;
+	ResourceManager<sf::Shader, IDShader>		ShaderManager;
 };

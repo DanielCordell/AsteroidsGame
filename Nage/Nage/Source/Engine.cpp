@@ -1,7 +1,7 @@
 #include <SFML/Graphics/Shader.hpp>
 
 #include "Includes/Engine.h"
-#include "Includes/IResourceManager.h"
+#include "Includes/ResourceManager.h"
 #include <SFML/Window/Event.hpp>
 
 Engine::Engine(sf::String title, sf::Vector2u size): window(title, size) {}
