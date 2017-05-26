@@ -39,7 +39,7 @@ void Engine::Events(Engine& engine)
 
 	sf::Event event;
 	while (window.pollEvent(event)) {
-		if (event.type == sf::Event::Resized) window.changeView(event.size.width, event.size.height);
+		//if (event.type == sf::Event::Resized) window.changeView(event.size.width, event.size.height);
 	}
 }
 
@@ -51,6 +51,7 @@ void Engine::Draw(Engine& engine)
 {
 	window.DrawStart();
 	sf::Sprite sprite(TexManager.Get(IDTexture::one));
+	sprite.setScale(10, 5);
 	window.Draw(sprite);
 	window.DrawEnd();
 }

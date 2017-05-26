@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 
 #include "SFML/System/Vector2.hpp"
 #include "SFML/Graphics/Drawable.hpp"
@@ -24,9 +23,10 @@ public:
 	// Needs to call Recreate() for settings to take effect
 	void Resize(sf::Vector2u& size) { windowSize = size; }
 
+	/*
 	//Change the Viewport (only if resize)
 	void changeView(int width, int height);
-
+	*/
 	//Standard Pollevent Function
 	bool pollEvent(sf::Event& event) { return window.pollEvent(event); }
 

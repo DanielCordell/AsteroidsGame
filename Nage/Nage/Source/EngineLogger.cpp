@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+
 #include "Includes/EngineLogger.h"
 
 void EngineLogger::Log(std::string str) {

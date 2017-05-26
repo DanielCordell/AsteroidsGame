@@ -5,7 +5,6 @@
 #include "SFML/Graphics/Sprite.hpp"
 #include "SFML/Graphics/RenderTexture.hpp"
 
-
 #include "ResourceTypes.h"
 #include "EngineLogger.h"
 #include "OS.h"

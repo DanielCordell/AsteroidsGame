@@ -131,6 +131,7 @@
     <ClInclude Include="Source\Includes\DiceRoller.h" />
     <ClInclude Include="Source\Includes\Engine.h" />
     <ClInclude Include="Source\Includes\EngineLogger.h" />
+    <ClInclude Include="Source\Includes\IScreen.h" />
     <ClInclude Include="Source\Includes\ResourceManager.h" />
     <ClInclude Include="Source\Includes\OS.h" />
     <ClInclude Include="Source\Includes\ResourceTypes.h" />
