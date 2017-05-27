@@ -32,6 +32,8 @@ public:
 
 
 	const bool IsDone() const { return isDone; }
+	void Done() { isDone = true; }
+
 	const bool IsFullscreen() const { return isFullscreen; }
 
 	void Recreate(); // Destroys THEN Creates the window

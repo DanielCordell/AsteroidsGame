@@ -41,6 +41,7 @@ void ScreenMainMenu::HandleEvents() {
 			}
 			sprite.move(movement);
 		}
+		else if (event.type == sf::Event::Closed) window.Done();
 	}
 }
 
