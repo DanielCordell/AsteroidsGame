@@ -2,11 +2,11 @@
 
 #include "Includes/Engine.h"
 #include "Includes/ResourceManager.h"
-#include <SFML/Window/Event.hpp>
+#include "Includes/ScreenMainMenu.h"
 
 Engine::Engine(sf::String title, sf::Vector2u size): window(title, size) {}
 
-bool Engine::Init(Engine &)
+void Engine::Init(Engine &)
 {
 
 	//Loading Textures
@@ -24,7 +24,7 @@ bool Engine::Init(Engine &)
 	//Loading Shaders
 	ShaderManager.Load(IDShader::one, "Resources/Test.glsl", sf::Shader::Type::Fragment);
 
-	return true;
+	Screens.push_back(std::make_unique<ScreenMainMenu>(*this,false));
 }
 
 void Engine::Cleanup()
@@ -33,25 +33,20 @@ void Engine::Cleanup()
 
 void Engine::Events(Engine& engine)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5)) { if (!window.IsFullscreen()) window.ToggleFullscreen(); }
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4)) { if (window.IsFullscreen()) window.ToggleFullscreen(); }
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) window.Recreate();
-
-	sf::Event event;
-	while (window.pollEvent(event)) {
-		//if (event.type == sf::Event::Resized) window.changeView(event.size.width, event.size.height);
-	}
+	Screens.back()->HandleEvents();
 }
 
 void Engine::Update(Engine& engine)
 {
+	Screens.back()->Update();
 }
 
 void Engine::Draw(Engine& engine)
 {
 	window.DrawStart();
-	sf::Sprite sprite(TexManager.Get(IDTexture::one));
-	sprite.setScale(10, 5);
-	window.Draw(sprite);
+	if (Screens.back()->IsTransparant() && Screens.size() > 1) {
+		Screens.end()[-2]->Draw();
+	}
+	Screens.back()->Draw();
 	window.DrawEnd();
 }

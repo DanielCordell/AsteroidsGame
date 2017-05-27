@@ -9,7 +9,7 @@ Window::~Window() {
 }
 
 void Window::DrawStart() {
-	window.clear(sf::Color::Black);
+	window.clear(sf::Color::Red);
 }
 void Window::DrawEnd() {
 	window.display();
@@ -19,7 +19,6 @@ void Window::Draw(sf::Drawable& drawable) {
 }
 
 void Window::Draw(sf::Drawable& drawable, sf::RenderStates& states) {
-	EngineLogger::Log(EngineLogger::LOG_INFO, "Drawing Object");
 	window.draw(drawable, states);
 }
 
@@ -33,7 +32,7 @@ void Window::Setup(const std::string& title, const sf::Vector2u& size) {
 }
 void Window::Create() {
 	EngineLogger::Log(EngineLogger::LOG_INFO, "Creating Window");
-	auto style = isFullscreen ? sf::Style::Fullscreen : sf::Style::Close;
+	auto style = isFullscreen ? sf::Style::Fullscreen : sf::Style::Close | sf::Style::Titlebar;
 	window.create(sf::VideoMode(windowSize.x, windowSize.y), windowTitle, style);
 	//changeView(windowSize.x, windowSize.y);
 }

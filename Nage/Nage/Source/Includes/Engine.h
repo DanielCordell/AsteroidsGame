@@ -16,7 +16,7 @@ public:
 	ResourceManager<sf::Shader, IDShader>		ShaderManager;
 
 	Engine(sf::String title, sf::Vector2u size);
-	bool Init(Engine&);
+	void Init(Engine&);
 	void Cleanup();
 	void Events(Engine&);
 	void Update(Engine&);

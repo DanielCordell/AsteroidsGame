@@ -121,6 +121,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ScreenMainMenu.cpp" />
+    <ClInclude Include="Source\Includes\ScreenMainMenu.h" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\DiceRoller.cpp" />
     <ClCompile Include="Source\Engine.cpp" />
