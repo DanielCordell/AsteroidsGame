@@ -1,5 +1,6 @@
 # NAGE
 NAGE: Not A Good Engine. Written by a first year university student. Hence the title.
+
 NOTE: Not really an engine, more of a framework, but I like the name and who really cares?
 
 Credit: https://github.com/monotron for the logging class foundation (which I had to change a bit, sorry!).
