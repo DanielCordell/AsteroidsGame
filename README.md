@@ -1,15 +1,14 @@
 # NAGE
 NAGE: Not A Good Engine. Written by a first year university student. Hence the title.
 
+* NOTE: Not really an engine, more of a framework, but I like the name and who really cares?
+* This exists just as a starting backbone for anything that I make, it's not that complicated and probably won't be updated that much.
+
 Credit: https://github.com/monotron for the logging class foundation (which I had to change a bit, sorry!).
 ## Current features
   * Resource Handlers for Music/Textures/Sound/Shaders/Fonts
   * Default Texture/Font/Shader handling if any files are missing (music and sound just won't play).
   * DnD-inspired random number generator.
-  
-## Planned features
-  * 2D top-down tile-based perspective.
-  * Trivial development for the budding game developer.
 
 ### Dependencies
   * SFML 2.4.2 (32-bit) - the project technically links to SFML statically but you can use dynamic if you like (be sure to change the project files to reflect this).
@@ -28,5 +27,3 @@ Credit: https://github.com/monotron for the logging class foundation (which I ha
   -- Nage.vcxproj
   -- [...]
   ```
-  * Press F5 and cross your fingers.
-
