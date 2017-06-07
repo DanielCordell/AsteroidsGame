@@ -23,6 +23,8 @@ public:
 	// Needs to call Recreate() for settings to take effect
 	void Resize(sf::Vector2u& size) { windowSize = size; }
 
+	void Done() { isDone = true; }
+
 	/*
 	//Change the Viewport (only if resize)
 	void changeView(int width, int height);

@@ -9,7 +9,7 @@ Window::~Window() {
 }
 
 void Window::DrawStart() {
-	window.clear(sf::Color::Red);
+	window.clear(sf::Color::Black);
 }
 void Window::DrawEnd() {
 	window.display();
