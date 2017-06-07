@@ -1,10 +1,8 @@
 #pragma once
 #include "IScreen.h"
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Graphics/RectangleShape.hpp>
-#include <SFML/System/Clock.hpp>
 
 class ScreenMainMenu : public IScreen {
+	bool isPlaying = false;
 
 public:
 	ScreenMainMenu(Engine& eng, bool transparant) : IScreen(eng, transparant) { Init(); }

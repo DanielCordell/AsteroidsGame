@@ -25,19 +25,17 @@ public:
 
 	void Done() { isDone = true; }
 
-	/*
-	//Change the Viewport (only if resize)
-	void changeView(int width, int height);
-	*/
 	//Standard Pollevent Function
 	bool pollEvent(sf::Event& event) { return window.pollEvent(event); }
-
+	
+	//Should not really
 
 	const bool IsDone() const { return isDone; }
 	const bool IsFullscreen() const { return isFullscreen; }
 
 	void Recreate(); // Destroys THEN Creates the window
 
+	operator sf::RenderWindow&() { return window; }
 private:
 	// Window Initialisation (should only be called at the start)
 	void Setup(const std::string& title, const sf::Vector2u& size); 
@@ -51,4 +49,5 @@ private:
 
 	bool isFullscreen;
 	bool isDone;
+	bool drawStarted;
 };

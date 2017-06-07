@@ -3,15 +3,20 @@
 
 Window::Window(const std::string title, const sf::Vector2u size) {
 	Setup(title, size);
+	drawStarted = false;
 }
 Window::~Window() {
 	Destroy();
 }
 
 void Window::DrawStart() {
+	if (drawStarted) EngineLogger::Log(EngineLogger::LOG_ERROR, "Draw has already started (DrawEnd not called)");
+	else drawStarted = true;
 	window.clear(sf::Color::Black);
 }
 void Window::DrawEnd() {
+	if (!drawStarted) EngineLogger::Log(EngineLogger::LOG_ERROR, "Draw has not started (DrawStart not called)");
+	else drawStarted = false;
 	window.display();
 }
 void Window::Draw(sf::Drawable& drawable) {
@@ -45,26 +50,3 @@ void Window::Recreate() {
 	Destroy();
 	Create();
 }
-
-/*
-void Window::changeView(int width, int height)
-{
-	EngineLogger::Log(EngineLogger::LOG_INFO, "Adjusting View");
-	sf::View view = window.getView();
-	float windowRatio = static_cast<float>(width) / static_cast<float>(height);
-	float viewRatio = static_cast<float>(view.getSize().x) / static_cast<float>(view.getSize().y);
-	float sizeX = 1, sizeY = 1, posX = 0, posY = 0;
-
-	if (windowRatio > viewRatio) {
-		sizeX = viewRatio / windowRatio;
-		posX = (1 - sizeX) / 2.0f;
-	}
-
-	else {
-		sizeY = windowRatio / viewRatio;
-		posY = (1 - sizeY) / 2.0f;
-	}
-	view.setViewport({ posX,posY,sizeX,sizeY });
-	window.setView(view);
-}
-*/
