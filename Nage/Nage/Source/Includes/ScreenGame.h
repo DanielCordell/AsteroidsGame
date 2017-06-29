@@ -1,10 +1,11 @@
-#pragma once
 #include "IScreen.h"
+#include "Player.h"
 
-class ScreenMainMenu : public IScreen {
+class ScreenGame : public IScreen {
+private:
+	Player player;
 public:
-	ScreenMainMenu(Engine& eng) : IScreen(eng, false) { Init(); }
-
+	ScreenGame(Engine& eng);
 	//Setup and Destroy
 	void Init() override;
 	void Cleanup() override;

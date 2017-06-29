@@ -28,10 +28,11 @@ public:
 	//Standard Pollevent Function
 	bool pollEvent(sf::Event& event) { return window.pollEvent(event); }
 	
-	//Should not really
 
 	const bool IsDone() const { return isDone; }
 	const bool IsFullscreen() const { return isFullscreen; }
+	const sf::Vector2u GetSize() const { return window.getSize(); }
+
 
 	void Recreate(); // Destroys THEN Creates the window
 

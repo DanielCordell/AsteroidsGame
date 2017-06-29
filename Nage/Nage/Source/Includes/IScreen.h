@@ -7,7 +7,7 @@ class IScreen {
 protected:
 	const bool isTransparant;
 	Engine& engine;
-	tgui::Gui gui;
+	std::unique_ptr<tgui::Gui> gui;
 public:
 	virtual ~IScreen() = default;
 	IScreen(Engine& eng, bool transparant);
@@ -27,4 +27,11 @@ public:
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 	const bool IsTransparant() const;
+
+	enum Type {
+		MAIN_MENU,
+		GAME,
+		SETTINGS,
+		END_GAME
+	};
 };

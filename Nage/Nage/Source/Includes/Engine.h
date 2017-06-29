@@ -15,13 +15,20 @@ public:
 	ResourceManager<sf::Font, IDFont>			FontManager;
 	ResourceManager<sf::Shader, IDShader>		ShaderManager;
 
+	//Basic Game Functions
 	Engine(sf::String title, sf::Vector2u size);
 	void Init(Engine&);
 	void Cleanup();
 	void Events(Engine&);
 	void Update(Engine&);
 	void Draw(Engine&);
-	Window& getWindow() { return window; }
+	Window& GetWindow() { return window; }
+
+	//Adding and removing Screens
+	void PushScreen(IScreen::Type type);
+	void PopScreen();
+	void ReplaceScreen(IScreen::Type type);
+	void MainMenu();
 private:
 	Window window;
 	std::vector<std::unique_ptr<IScreen>> Screens;

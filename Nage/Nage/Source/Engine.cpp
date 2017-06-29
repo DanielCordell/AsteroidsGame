@@ -3,14 +3,18 @@
 #include "Includes/Engine.h"
 #include "Includes/ResourceManager.h"
 #include "Includes/ScreenMainMenu.h"
+#include "Includes/ScreenGame.h"
 
 Engine::Engine(sf::String title, sf::Vector2u size): window(title, size) {}
 
 void Engine::Init(Engine &)
 {
-
 	//Loading Textures
-	TexManager.Load(IDTexture::one, "Resources/Test.png");
+	TexManager.Load(IDTexture::ASTEROID_HUGE, "Resources/asteroidhuge.png");
+	TexManager.Load(IDTexture::ASTEROID_LARGE, "Resources/asteroidlarge.png");
+	TexManager.Load(IDTexture::ASTEROID_NORMAL, "Resources/asteroid.png");
+	TexManager.Load(IDTexture::ASTEROID_TINY, "Resources/asteroidtiny.png");
+	TexManager.Load(IDTexture::PLAYER, "Resources/player.png");
 
 	//Loading Sounds
 	SoundManager.Load(IDSound::one, "Resources/Test.wav");
@@ -24,11 +28,15 @@ void Engine::Init(Engine &)
 	//Loading Shaders
 	ShaderManager.Load(IDShader::one, "Resources/Test.glsl", sf::Shader::Type::Fragment);
 
-	Screens.push_back(std::make_unique<ScreenMainMenu>(*this,false));
+	MainMenu();
 }
 
 void Engine::Cleanup()
 {
+	for (auto& screen : Screens) {
+		screen->Cleanup();
+	}
+	Screens.clear();
 }
 
 void Engine::Events(Engine& engine)
@@ -49,4 +57,53 @@ void Engine::Draw(Engine& engine)
 	}
 	Screens.back()->Draw();
 	window.DrawEnd();
+}
+
+void Engine::PushScreen(IScreen::Type type)
+{
+	EngineLogger::Log(EngineLogger::LOG_INFO, "Creating Screen of ID " + std::to_string(type));
+	std::unique_ptr<IScreen> newScreen;
+	switch (type) {
+	case IScreen::MAIN_MENU:
+		Screens.push_back(std::make_unique<ScreenMainMenu>(*this));
+		break;
+	case IScreen::GAME:
+		Screens.push_back(std::make_unique<ScreenGame>(*this));
+		break;
+	//TODO: More Cases
+	default:
+		EngineLogger::Log(EngineLogger::LOG_WARNING, "PushScreen enum is invalid - Doing nothing");
+		break;
+
+	}
+}
+void Engine::PopScreen()
+{
+	EngineLogger::Log(EngineLogger::LOG_INFO, "Attempting to Destroy Screen");
+	if (Screens.size() > 1) {
+		Screens.back()->Cleanup();
+		Screens.pop_back();
+	}
+	else{
+		EngineLogger::Log(EngineLogger::LOG_WARNING, "Trying to destroy a screen that would leave no valid screens - Doing nothing");
+	}
+	EngineLogger::Log(EngineLogger::LOG_INFO, "Screen Destroyed");
+}
+
+void Engine::ReplaceScreen(IScreen::Type type)
+{
+	PopScreen();
+	PushScreen(type);
+}
+
+void Engine::MainMenu()
+{
+	if (Screens.empty()) {
+		PushScreen(IScreen::MAIN_MENU);
+	}
+	else {
+		while (Screens.size() > 1) {
+			Screens.pop_back();
+		}
+	}
 }

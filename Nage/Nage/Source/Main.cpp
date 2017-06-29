@@ -13,7 +13,7 @@ int main() {
 		sf::Clock clock;
 		sf::Time elapsedTime;
 		float frameTime = 1.0f / 60.0f;
-		while (!engine.getWindow().IsDone()) {
+		while (!engine.GetWindow().IsDone()) {
 			elapsedTime += clock.restart();
 			engine.Events(engine);
 			bool shouldUpdate = elapsedTime.asSeconds() >= frameTime;
@@ -23,6 +23,7 @@ int main() {
 				elapsedTime = sf::Time::Zero;
 			}
 		}
+		engine.Cleanup();
 		EngineLogger::Log(EngineLogger::LOG_INFO, "Goodbye!");
 	}
 	catch(tgui::Exception e) {
