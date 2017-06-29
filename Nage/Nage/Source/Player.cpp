@@ -25,10 +25,10 @@ void Player::Update() {
 		velChange.y = cos(angle * tgui::pi / 180.f) / 6.f;
 		vel += velChange;
 	}
-	if (angleChange != 0 || velChange != sf::Vector2f(0, 0)) {
+	angle += angleChange;
+	if (velChange != sf::Vector2f(0, 0)) {
 		if (thrust.getStatus() != sf::Sound::Playing) thrust.play();
 		sprite.setTexture(texMove);
-		angle += angleChange;
 	}
 	else {
 		if (thrust.getStatus() == sf::Sound::Playing) thrust.stop();
