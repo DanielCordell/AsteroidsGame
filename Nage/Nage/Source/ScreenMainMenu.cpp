@@ -80,7 +80,8 @@ void ScreenMainMenu::HandleEvents() {
 			if (event.key.code == sf::Keyboard::Escape) window.Done();
 		}
 		if (event.type == sf::Event::Closed) window.Done();
-		gui->handleEvent(event);
+		
+		if (gui) gui->handleEvent(event);
 	}
 }
 

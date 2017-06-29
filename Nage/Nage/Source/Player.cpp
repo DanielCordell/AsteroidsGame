@@ -1,9 +1,9 @@
 #include "Includes/Player.h"
 
-Player::Player(sf::Vector2u windowSize, Engine& eng) : vel(0,0), angle(0) {
+Player::Player(sf::Vector2u windowSize, Engine& eng) : vel(0,0), angle(0), thrust(eng.SoundManager.Get(IDSound::THRUST)), texStill(eng.TexManager.Get(IDTexture::PLAYER)), texMove(eng.TexManager.Get(IDTexture::PLAYER_MOVE))
+{
 	this->windowSize = windowSize;
-	texStill = eng.TexManager.Get(IDTexture::PLAYER);
-	texMove = eng.TexManager.Get(IDTexture::PLAYER_MOVE);
+	thrust.setLoop(true);
 
 	sprite.setTexture(texStill);
 	sprite.setScale(0.3, 0.3);
@@ -26,10 +26,12 @@ void Player::Update() {
 		vel += velChange;
 	}
 	if (angleChange != 0 || velChange != sf::Vector2f(0, 0)) {
+		if (thrust.getStatus() != sf::Sound::Playing) thrust.play();
 		sprite.setTexture(texMove);
 		angle += angleChange;
 	}
 	else {
+		if (thrust.getStatus() == sf::Sound::Playing) thrust.stop();
 		sprite.setTexture(texStill);
 	}
 

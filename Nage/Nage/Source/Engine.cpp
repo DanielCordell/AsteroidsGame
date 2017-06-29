@@ -15,10 +15,11 @@ void Engine::Init(Engine &)
 	TexManager.Load(IDTexture::ASTEROID_NORMAL, "Resources/asteroid.png");
 	TexManager.Load(IDTexture::ASTEROID_TINY, "Resources/asteroidtiny.png");
 	TexManager.Load(IDTexture::PLAYER, "Resources/player.png");
-
-	//Loading Sounds
-	SoundManager.Load(IDSound::one, "Resources/Test.wav");
+	TexManager.Load(IDTexture::PLAYER_MOVE, "Resources/playermove.png");
 	
+	//Loading Sounds
+	SoundManager.Load(IDSound::THRUST, "Resources/thrust.wav");
+
 	//Loading Music
 	MusicManager.Load(IDMusic::one, "Resources/Test2.wav");
 	

@@ -10,7 +10,7 @@
 #include "OS.h"
 
 
-enum class IDSound { one };
+enum class IDSound { THRUST };
 enum class IDTexture { ASTEROID_HUGE, ASTEROID_LARGE, ASTEROID_NORMAL, ASTEROID_TINY, PLAYER, PLAYER_MOVE };
 enum class IDShader { one };
 enum class IDMusic { one };

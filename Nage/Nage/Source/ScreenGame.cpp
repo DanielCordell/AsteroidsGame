@@ -17,18 +17,15 @@ void ScreenGame::Cleanup() {
 
 void ScreenGame::HandleEvents() {
 	sf::Event event;
-	bool doesPop = false;
 	Window& window = engine.GetWindow();
 	while (window.pollEvent(event)) {
 		if (event.type == sf::Event::KeyPressed) {
-			if (event.key.code == sf::Keyboard::Escape) doesPop = true;
+			if (event.key.code == sf::Keyboard::Escape) window.Done();
 		}
-		if (event.type == sf::Event::Closed) doesPop = true;
+		if (event.type == sf::Event::Closed) window.Done();
 
-		if (gui)
-			gui->handleEvent(event);
+		if (gui) gui->handleEvent(event);
 	}
-	if (doesPop) engine.PopScreen();
 }
 
 void ScreenGame::Update() {
