@@ -10,7 +10,9 @@ private:
 	sf::Sprite		sprite;
 	sf::Texture&	texStill;
 	sf::Texture&	texMove;
+
 	sf::Sound		thrust;
+	sf::Sound		shoot;
 
 	sf::Vector2f	pos;
 	sf::Vector2f	vel;

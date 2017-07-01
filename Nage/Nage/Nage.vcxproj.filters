@@ -101,6 +101,9 @@
     <Image Include="Resources\asteroidtiny.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\playermove.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Test.ttf" />
@@ -110,6 +113,12 @@
       <Filter>Resource Files</Filter>
     </Media>
     <Media Include="Resources\Test2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Resources\thrust.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Resources\shoot.wav">
       <Filter>Resource Files</Filter>
     </Media>
   </ItemGroup>

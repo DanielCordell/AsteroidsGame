@@ -19,6 +19,7 @@ void Engine::Init(Engine &)
 	
 	//Loading Sounds
 	SoundManager.Load(IDSound::THRUST, "Resources/thrust.wav");
+	SoundManager.Load(IDSound::SHOOT, "Resources/shoot.wav");
 
 	//Loading Music
 	MusicManager.Load(IDMusic::one, "Resources/Test2.wav");
