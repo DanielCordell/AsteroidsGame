@@ -11,7 +11,7 @@
 
 
 enum class IDSound { THRUST, SHOOT };
-enum class IDTexture { ASTEROID_HUGE, ASTEROID_LARGE, ASTEROID_NORMAL, ASTEROID_TINY, PLAYER, PLAYER_MOVE };
+enum class IDTexture { ASTEROID_HUGE, ASTEROID_LARGE, ASTEROID_NORMAL, ASTEROID_TINY, PLAYER, PLAYER_MOVE, BULLET };
 enum class IDShader { one };
 enum class IDMusic { one };
 enum class IDFont { one };

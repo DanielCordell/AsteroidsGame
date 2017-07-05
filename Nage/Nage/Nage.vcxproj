@@ -122,10 +122,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Bullet.cpp" />
     <ClCompile Include="Source\IScreen.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\ScreenGame.cpp" />
     <ClCompile Include="Source\ScreenMainMenu.cpp" />
+    <ClInclude Include="Source\Includes\Bullet.h" />
     <ClInclude Include="Source\Includes\Player.h" />
     <ClInclude Include="Source\Includes\ScreenGame.h" />
     <ClInclude Include="Source\Includes\ScreenMainMenu.h" />

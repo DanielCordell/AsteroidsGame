@@ -1,7 +1,11 @@
 #include "Includes/Player.h"
 #include "Includes/DiceRoller.h"
 
-Player::Player(sf::Vector2u windowSize, Engine& eng) : vel(0,0), angle(0), thrust(eng.SoundManager.Get(IDSound::THRUST)), shoot(eng.SoundManager.Get(IDSound::SHOOT)), texStill(eng.TexManager.Get(IDTexture::PLAYER)), texMove(eng.TexManager.Get(IDTexture::PLAYER_MOVE))
+Player::Player(sf::Vector2u windowSize, Engine& eng) : vel(0,0), angle(0), 
+	thrust(eng.SoundManager.Get(IDSound::THRUST)), 
+	shoot(eng.SoundManager.Get(IDSound::SHOOT)), 
+	texStill(eng.TexManager.Get(IDTexture::PLAYER)), 
+	texMove(eng.TexManager.Get(IDTexture::PLAYER_MOVE))
 {
 	this->windowSize = windowSize;
 	thrust.setLoop(true);
@@ -25,7 +29,7 @@ void Player::Update() {
 		velChange.y = cos(angle * tgui::pi / 180.f) / 6.f;
 		vel += velChange;
 	}
-	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Mouse::isButtonPressed(sf::Mouse::Left)) && shoot.getStatus() != shoot.Playing) { //TODO change to shot timer
+	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) && shoot.getStatus() != shoot.Playing) { //TODO change to shot timer
 		int pitchMult = DiceRoller::RollSum(1, 5);
   		shoot.setPitch(pitchMult * 0.1f + 0.7f);
 		shoot.play();
