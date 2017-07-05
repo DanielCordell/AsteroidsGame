@@ -1,8 +1,11 @@
 #include "Includes/ScreenGame.h"
 #include "Includes/Window.h"
 #include "Includes/Engine.h"
+#include "Includes/DiceRoller.h"
 
-ScreenGame::ScreenGame(Engine& eng) : IScreen(eng, false), player(eng.GetWindow().GetSize(),eng) {
+ScreenGame::ScreenGame(Engine& eng) : IScreen(eng, false), player(eng.GetWindow().GetSize(),eng), bulletHandler(eng),
+	shoot(eng.SoundManager.Get(IDSound::SHOOT))
+{
 	auto windowSize = engine.GetWindow().GetSize();
 	Init();
 }
@@ -30,9 +33,17 @@ void ScreenGame::HandleEvents() {
 
 void ScreenGame::Update() {
 	player.Update();
+	bulletHandler.Update();
+	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) && shoot.getStatus() != shoot.Playing) { //TODO change to shot timer
+		int pitchMult = DiceRoller::RollSum(1, 5);
+		shoot.setPitch(pitchMult * 0.1f + 0.7f);
+		shoot.play();
+		bulletHandler.CreateBullet(player.GetPosition(), Bullet::normal, player.GetAngle());
+	}
 }
 
 void ScreenGame::Draw() {
 	auto& window = engine.GetWindow();
 	window.Draw(player);
+	window.Draw(bulletHandler);
 }

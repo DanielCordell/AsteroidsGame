@@ -1,9 +1,12 @@
 #include "IScreen.h"
 #include "Player.h"
+#include "BulletHandler.h"
 
 class ScreenGame : public IScreen {
 private:
-	Player player;
+	Player			player;
+	BulletHandler	bulletHandler;
+	sf::Sound		shoot;
 public:
 	ScreenGame(Engine& eng);
 	//Setup and Destroy

@@ -1,9 +1,14 @@
 #pragma once
-#include <SFML/Graphics/Sprite.hpp>
+
+#include "SFML/Graphics/Sprite.hpp"
+
 #include "Engine.h"
 
 class Bullet : public sf::Drawable {
 private:
+	sf::Clock clock;
+	bool shouldDelete;
+
 	sf::Sprite sprite;
 	sf::Texture& texture;
 
@@ -12,14 +17,15 @@ private:
 	int					angle; // In Degrees
 public:
 	enum shotSpeed {
-		slow = 1,
-		normal = 2,
-		fast = 3
+		slow = 5,
+		normal = 10,
+		fast = 15
 	};
 
-	Bullet(sf::Vector2f position, shotSpeed speed, int ang, Engine& eng);
+	Bullet(sf::Vector2f position, shotSpeed speed, int ang, sf::Texture& tex);
 	void				Update();
 	void				draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 	const sf::Vector2f	GetPosition() const;
 	const sf::FloatRect	GetBounds() const;
+	const bool			ShouldDelete() const;
 };
