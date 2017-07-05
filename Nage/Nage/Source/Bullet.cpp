@@ -1,6 +1,6 @@
 #include "Includes/Bullet.h"
 
-Bullet::Bullet(sf::Vector2f pos, shotSpeed speed, int ang, sf::Texture& tex): texture(tex), pos(pos), angle(ang), shouldDelete(false) {
+Bullet::Bullet(sf::Vector2f pos, shotSpeed speed, int ang, sf::Texture& tex): shouldDelete(false), texture(tex), pos(pos), angle(ang) {
 	vel.x = speed * sin(-angle * tgui::pi / 180.f);
 	vel.y = speed * cos(angle * tgui::pi / 180.f);
 	sprite.setTexture(texture);
