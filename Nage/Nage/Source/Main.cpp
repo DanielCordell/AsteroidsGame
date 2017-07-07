@@ -6,10 +6,9 @@ int main() {
 	try {
 		EngineLogger::Log(EngineLogger::LOG_INFO, "Startup Initialised");
 
-		sf::Vector2u size = { sf::VideoMode::getFullscreenModes()[0].width, sf::VideoMode::getFullscreenModes()[0].height }; //TODO: Load from Settings
+		sf::Vector2u size = { 1920,1080 }; //TODO: Load from Settings
 		Engine engine("Title", size); //TODO: THIS STUFF
 		engine.Init(engine);
-
 		sf::Clock clock;
 		sf::Time elapsedTime;
 		float frameTime = 1.0f / 60.0f;

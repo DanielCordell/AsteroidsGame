@@ -4,8 +4,11 @@ Bullet::Bullet(sf::Vector2f pos, shotSpeed speed, int ang, sf::Texture& tex): sh
 	vel.x = speed * sin(-angle * tgui::pi / 180.f);
 	vel.y = speed * cos(angle * tgui::pi / 180.f);
 	sprite.setTexture(texture);
+	float creationOffset = texture.getSize().y / 2.0f;
+	pos.x += creationOffset * sin(-angle * tgui::pi / 180.f);
+	pos.y += creationOffset * cos(angle * tgui::pi / 180.f);
 	sprite.setPosition(pos);
-	std::cout << angle << std::endl;
+	sprite.setRotation(ang);
 	sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);
 }
 

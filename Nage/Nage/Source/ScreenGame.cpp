@@ -26,7 +26,8 @@ void ScreenGame::HandleEvents() {
 			if (event.key.code == sf::Keyboard::Escape) window.Done();
 		}
 		if (event.type == sf::Event::Closed) window.Done();
-
+		if (event.type == sf::Event::Resized) 
+			window.Resize(sf::Vector2u(event.size.width, event.size.height));
 		if (gui) gui->handleEvent(event);
 	}
 }

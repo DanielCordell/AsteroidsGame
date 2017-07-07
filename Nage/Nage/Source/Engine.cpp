@@ -16,6 +16,8 @@ void Engine::Init(Engine &)
 	TexManager.Load(IDTexture::ASTEROID_TINY, "Resources/asteroidtiny.png");
 	TexManager.Load(IDTexture::PLAYER, "Resources/player.png");
 	TexManager.Load(IDTexture::PLAYER_MOVE, "Resources/playermove.png");
+	TexManager.Load(IDTexture::BULLET, "Resources/bullet.png");
+
 	
 	//Loading Sounds
 	SoundManager.Load(IDSound::THRUST, "Resources/thrust.wav");

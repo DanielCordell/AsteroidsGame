@@ -40,8 +40,8 @@ void Player::Update() {
 	}
 
 	//Friction
-	vel.x *= .99f;
-	vel.y *= .99f;
+	vel.x *= .985f;
+	vel.y *= .985f;
 	sprite.move(vel);
 
 	//Adjust position if off screen
