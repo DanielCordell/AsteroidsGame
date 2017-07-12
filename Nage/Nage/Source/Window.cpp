@@ -37,7 +37,7 @@ void Window::ToggleFullscreen() {
 	Recreate();
 }
 
-void Window::Resize(sf::Vector2u & size) {
+void Window::Resize(sf::Vector2u size) {
 	windowSize = size; 
 	window.setSize(windowSize);
 	ChangeView();

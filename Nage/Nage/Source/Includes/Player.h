@@ -1,23 +1,18 @@
 #pragma once
 
-#include "SFML/Graphics/Sprite.hpp"
 #include "SFML/System/Vector2.hpp"
 #include "SFML/Graphics/Texture.hpp"
 #include "SFML/Audio/Sound.hpp"
 
 #include "Engine.h"
+#include "Entity.h"
 
-class Player : public sf::Drawable {
+class Player : public Entity {
 private:
-	sf::Sprite		sprite;
 	sf::Texture&	texStill;
 	sf::Texture&	texMove;
 
 	sf::Sound		thrust;
-
-	sf::Vector2f	vel;
-	int				angle; // In Degrees
-	sf::Vector2u	windowSize;
 public:
 	Player(sf::Vector2u windowSize, Engine& eng);
 	void			Update();

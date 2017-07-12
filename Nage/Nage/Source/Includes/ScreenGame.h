@@ -1,3 +1,4 @@
+#pragma once
 #include "IScreen.h"
 #include "Player.h"
 #include "BulletHandler.h"

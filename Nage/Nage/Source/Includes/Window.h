@@ -21,7 +21,7 @@ public:
 
 	void ToggleFullscreen();
 
-	void Resize(sf::Vector2u& size);
+	void Resize(sf::Vector2u size);
 
 	void Done() { isDone = true; }
 

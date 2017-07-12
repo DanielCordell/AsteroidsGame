@@ -128,8 +128,10 @@
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\ScreenGame.cpp" />
     <ClCompile Include="Source\ScreenMainMenu.cpp" />
+    <ClCompile Include="Source\Entity.cpp" />
     <ClInclude Include="Source\Includes\Bullet.h" />
     <ClInclude Include="Source\Includes\BulletHandler.h" />
+    <ClInclude Include="Source\Includes\Entity.h" />
     <ClInclude Include="Source\Includes\Player.h" />
     <ClInclude Include="Source\Includes\ScreenGame.h" />
     <ClInclude Include="Source\Includes\ScreenMainMenu.h" />

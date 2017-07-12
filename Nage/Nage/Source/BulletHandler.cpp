@@ -19,5 +19,5 @@ void BulletHandler::Update() {
 }
 
 void BulletHandler::CreateBullet(sf::Vector2f pos, Bullet::shotSpeed speed, int angle) {
-	bullets.push_back(std::make_unique<Bullet>(pos, speed, angle, bulletTexture));
+	bullets.push_back(std::make_unique<Bullet>(pos, speed, angle, bulletTexture, engine.GetWindow().GetSize()));
 }
