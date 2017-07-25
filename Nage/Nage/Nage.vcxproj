@@ -131,10 +131,12 @@
     <ClCompile Include="Source\Entity.cpp" />
     <ClInclude Include="Source\Includes\Bullet.h" />
     <ClInclude Include="Source\Includes\BulletHandler.h" />
+    <ClInclude Include="Source\Includes\Common.hpp" />
     <ClInclude Include="Source\Includes\Entity.h" />
     <ClInclude Include="Source\Includes\Player.h" />
     <ClInclude Include="Source\Includes\ScreenGame.h" />
     <ClInclude Include="Source\Includes\ScreenMainMenu.h" />
+    <ClCompile Include="Source\Starfield.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\DiceRoller.cpp" />
     <ClCompile Include="Source\Engine.cpp" />
@@ -149,6 +151,7 @@
     <ClInclude Include="Source\Includes\ResourceManager.h" />
     <ClInclude Include="Source\Includes\OS.h" />
     <ClInclude Include="Source\Includes\ResourceTypes.h" />
+    <ClInclude Include="Source\Includes\Starfield.hpp" />
     <ClInclude Include="Source\Includes\Window.h" />
   </ItemGroup>
   <ItemGroup>

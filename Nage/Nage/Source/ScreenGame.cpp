@@ -3,8 +3,9 @@
 #include "Includes/Engine.h"
 #include "Includes/DiceRoller.h"
 
-ScreenGame::ScreenGame(Engine& eng) : IScreen(eng, false), player(eng.GetWindow().GetSize(),eng), bulletHandler(eng),
-	shoot(eng.SoundManager.Get(IDSound::SHOOT))
+ScreenGame::ScreenGame(Engine& eng) : IScreen(eng, false), player(eng.GetWindow().GetSize(), eng), bulletHandler(eng),
+shoot(eng.SoundManager.Get(IDSound::SHOOT)), 
+starfield(sf::Vector2f( eng.GetWindow().GetSize().x, eng.GetWindow().GetSize().y ), 400, sf::Color::White)
 {
 	auto windowSize = engine.GetWindow().GetSize();
 	Init();
@@ -41,10 +42,12 @@ void ScreenGame::Update() {
 		shoot.play();
 		bulletHandler.CreateBullet(player.GetPosition(), Bullet::normal, player.GetAngle());
 	}
+	starfield.move({ 3,4 });
 }
 
 void ScreenGame::Draw() {
 	auto& window = engine.GetWindow();
+	window.Draw(starfield);
 	window.Draw(player);
 	window.Draw(bulletHandler);
 }

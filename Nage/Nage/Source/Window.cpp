@@ -15,9 +15,6 @@ void Window::DrawStart() {
 	if (drawStarted) EngineLogger::Log(EngineLogger::LOG_ERROR, "Draw has already started (DrawEnd not called)");
 	else drawStarted = true;
 	window.clear(sf::Color::Black);
-	sf::RectangleShape rect{ sf::Vector2f(1920,1080) };
-	rect.setFillColor(sf::Color(0, 26, 51));
-	window.draw(rect);
 }
 void Window::DrawEnd() {
 	if (!drawStarted) EngineLogger::Log(EngineLogger::LOG_ERROR, "Draw has not started (DrawStart not called)");
