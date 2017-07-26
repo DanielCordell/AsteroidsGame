@@ -126,6 +126,7 @@
     <ClCompile Include="Source\Bullet.cpp" />
     <ClCompile Include="Source\BulletHandler.cpp" />
     <ClCompile Include="Source\AsteroidHandler.cpp" />
+    <ClCompile Include="Source\Collision.cpp" />
     <ClCompile Include="Source\IScreen.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\ScreenGame.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="Source\Includes\AsteroidHandler.h" />
     <ClInclude Include="Source\Includes\Bullet.h" />
     <ClInclude Include="Source\Includes\BulletHandler.h" />
+    <ClInclude Include="Source\Includes\Collision.h" />
     <ClInclude Include="Source\Includes\Common.hpp" />
     <ClInclude Include="Source\Includes\Entity.h" />
     <ClInclude Include="Source\Includes\Player.h" />

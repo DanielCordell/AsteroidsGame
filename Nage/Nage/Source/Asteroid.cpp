@@ -1,6 +1,5 @@
 #include "Includes/Asteroid.h"
 #include "Includes/DiceRoller.h"
-#include <iostream>
 
 
 Asteroid::Asteroid(AsteroidType type, sf::Texture& texture) : Entity(texture, DiceRoller::RollSum(1, 360)), type(type) {
