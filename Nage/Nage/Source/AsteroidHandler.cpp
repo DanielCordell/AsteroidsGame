@@ -47,7 +47,7 @@ void AsteroidHandler::SpawnAsteroids(int num, Asteroid::AsteroidType oldType, sf
 	if (oldType == Asteroid::large) newType = Asteroid::medium;
 	else newType = Asteroid::small;
 	for (int i = 0; i < num; ++i) 
-		asteroids.push_back(std::make_unique<Asteroid>(newType, newType == Asteroid::large ? largeTex : medTex,position));
+		asteroids.push_back(std::make_unique<Asteroid>(newType, newType == Asteroid::medium ? medTex : smallTex,position));
 }
 
 void AsteroidHandler::GenerateAsteroids(int numLarge, int numMed, int numSmall) {

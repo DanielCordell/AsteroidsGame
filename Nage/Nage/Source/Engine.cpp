@@ -23,7 +23,7 @@ void Engine::Init(Engine &)
 	SoundManager.Load(IDSound::SHOOT, "Resources/shoot.wav");
 
 	//Loading Music
-	MusicManager.Load(IDMusic::one, "Resources/Test2.wav");
+	//MusicManager.Load(IDMusic::one, "Resources/Test2.wav");
 	
 	//Loading Fonts
 	FontManager.Load(IDFont::one, "Resources/Test.ttf");
