@@ -1,5 +1,6 @@
 # Asteroids
 
-You've seen it before
+You've seen it before, just a simple game of asteroids.
+1461 Lines of code and counting.
 
-Uses my [Nage](https://github.com/DanielCordell/NAGE) framework.
+Uses SFML.
