@@ -28,10 +28,10 @@ int AsteroidHandler::HandleCollision(BulletHandler& bullets)
 {
 	int scoreChange = 0;
 	for (int i = 0; i < Length(); ++i) {
-		for (int i = 0; i < bullets.Length(); ++i) {
-			if (bullets[i].GetBounds().intersects(asteroids[i]->GetBounds())) {
+		for (int j = 0; j < bullets.Length(); ++j) {
+			if (bullets[j].GetBounds().intersects(asteroids[i]->GetBounds())) {
 				asteroids[i]->SetDelete();
-				bullets[i].SetDelete();
+				bullets[j].SetDelete();
 				scoreChange += asteroids[i]->type;
 
 				//Create new asteroids
