@@ -10,7 +10,6 @@ Engine::Engine(sf::String title, sf::Vector2u size): window(title, size) {}
 void Engine::Init(Engine &)
 {
 	//Loading Textures
-	TexManager.Load(IDTexture::ASTEROID_HUGE, "Resources/asteroidhuge.png");
 	TexManager.Load(IDTexture::ASTEROID_LARGE, "Resources/asteroidlarge.png");
 	TexManager.Load(IDTexture::ASTEROID_NORMAL, "Resources/asteroid.png");
 	TexManager.Load(IDTexture::ASTEROID_TINY, "Resources/asteroidtiny.png");

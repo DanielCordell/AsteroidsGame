@@ -2,9 +2,11 @@
 
 #include <random>
 #include <vector>
+#include <ctime>
 
 class DiceRoller
 {
+	static std::default_random_engine generator;
 public:
 	// Dice Rolling
 	const static std::vector<unsigned int> Roll(unsigned int diceNumber, unsigned int sideNumber);
@@ -17,6 +19,4 @@ public:
 
 	const static int RollSum(unsigned int diceNumber, unsigned int sideNumber);
 	const static int Sum(std::vector<unsigned int> rolls);
-private:
-	static std::default_random_engine generator;
 };

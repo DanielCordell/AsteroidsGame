@@ -5,13 +5,15 @@
 
 ScreenGame::ScreenGame(Engine& eng) : IScreen(eng, false), player(eng.GetWindow().GetSize(), eng), bulletHandler(eng),
 shoot(eng.SoundManager.Get(IDSound::SHOOT)), 
-starfield(sf::Vector2f( eng.GetWindow().GetSize().x, eng.GetWindow().GetSize().y ), 400, sf::Color::White)
+starfield(sf::Vector2f( eng.GetWindow().GetSize().x, eng.GetWindow().GetSize().y ), 400, sf::Color::White),
+asteroidHandler(eng.TexManager.Get(IDTexture::ASTEROID_LARGE), eng.TexManager.Get(IDTexture::ASTEROID_NORMAL), eng.TexManager.Get(IDTexture::ASTEROID_TINY))
 {
-	auto windowSize = engine.GetWindow().GetSize();
 	Init();
 }
 
 void ScreenGame::Init() {
+	score = 0;
+	lives = 3;
 }
 
 void ScreenGame::Cleanup() {
@@ -36,11 +38,17 @@ void ScreenGame::HandleEvents() {
 void ScreenGame::Update() {
 	player.Update();
 	bulletHandler.Update();
+	asteroidHandler.Update();
+	
+	bool shouldLoseLife = asteroidHandler.HandleCollision(player);
+	int scoreChange = asteroidHandler.HandleCollision(bulletHandler);
+
+
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) && shoot.getStatus() != shoot.Playing) { //TODO change to shot timer
 		int pitchMult = DiceRoller::RollSum(1, 5);
 		shoot.setPitch(pitchMult * 0.1f + 0.7f);
 		shoot.play();
-		bulletHandler.CreateBullet(player.GetPosition(), Bullet::normal, player.GetAngle());
+		bulletHandler.CreateBullet(player.GetPosition(), 10, player.GetAngle());
 	}
 	starfield.move({ 3,4 });
 }
@@ -48,6 +56,7 @@ void ScreenGame::Update() {
 void ScreenGame::Draw() {
 	auto& window = engine.GetWindow();
 	window.Draw(starfield);
+	window.Draw(asteroidHandler);
 	window.Draw(player);
 	window.Draw(bulletHandler);
 }

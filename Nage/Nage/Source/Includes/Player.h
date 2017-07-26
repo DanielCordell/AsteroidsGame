@@ -17,6 +17,4 @@ public:
 	Player(sf::Vector2u windowSize, Engine& eng);
 	void			Update();
 	void			draw(sf::RenderTarget &target, sf::RenderStates states) const override;
-	sf::Vector2f	GetPosition() const;
-	int				GetAngle() const;
 };

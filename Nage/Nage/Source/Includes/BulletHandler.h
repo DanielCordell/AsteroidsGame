@@ -13,5 +13,7 @@ public:
 	BulletHandler(Engine& eng);
 	void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 	void Update();
-	void CreateBullet(sf::Vector2f pos, Bullet::shotSpeed speed, int angle);
+	void CreateBullet(sf::Vector2f pos, int speed, int angle);
+	Bullet& operator [](int i) const { return *bullets[i]; }
+	const int Length() const { return bullets.size(); }
 };

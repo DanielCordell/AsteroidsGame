@@ -122,13 +122,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Asteroid.cpp" />
     <ClCompile Include="Source\Bullet.cpp" />
     <ClCompile Include="Source\BulletHandler.cpp" />
+    <ClCompile Include="Source\AsteroidHandler.cpp" />
     <ClCompile Include="Source\IScreen.cpp" />
     <ClCompile Include="Source\Player.cpp" />
     <ClCompile Include="Source\ScreenGame.cpp" />
     <ClCompile Include="Source\ScreenMainMenu.cpp" />
     <ClCompile Include="Source\Entity.cpp" />
+    <ClInclude Include="Source\Includes\Asteroid.h" />
+    <ClInclude Include="Source\Includes\AsteroidHandler.h" />
     <ClInclude Include="Source\Includes\Bullet.h" />
     <ClInclude Include="Source\Includes\BulletHandler.h" />
     <ClInclude Include="Source\Includes\Common.hpp" />

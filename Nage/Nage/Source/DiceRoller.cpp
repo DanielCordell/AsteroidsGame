@@ -1,5 +1,8 @@
 #include <string>
 #include <algorithm>
+#include <iostream>
+#include <functional>
+
 
 #include "Includes/DiceRoller.h"
 #include "Includes/EngineLogger.h"
@@ -57,4 +60,4 @@ const int DiceRoller::Sum(std::vector<unsigned int> rolls)
 	return sum;
 }
 
-std::default_random_engine DiceRoller::generator;
+std::default_random_engine DiceRoller::generator{ static_cast<unsigned int>(time(nullptr)) };
