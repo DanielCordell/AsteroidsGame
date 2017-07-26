@@ -20,5 +20,6 @@ public:
 	const bool			ShouldDelete() const { return shouldDelete; }
 	void				SetDelete() { shouldDelete = true; }
 	int					GetAngle() const { return angle; }
+	sf::Sprite			GetSprite() const { return sprite; }
 	void draw(sf::RenderTarget & target, sf::RenderStates states) const override;
 };

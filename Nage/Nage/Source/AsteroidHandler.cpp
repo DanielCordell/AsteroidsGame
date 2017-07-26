@@ -1,11 +1,12 @@
 #include "Includes/AsteroidHandler.h"
+#include "Includes/Collision.h"
 
 bool AsteroidHandler::HandleCollision(Player& player)
 {
 	bool isCollision = false;
 	auto pBounds = player.GetBounds();
 	for (int i = 0; i < Length(); ++i) {
-		if (pBounds.intersects(asteroids[i]->GetBounds())) {
+		if (Collision::PixelPerfectTest(player.GetSprite(),asteroids[i]->GetSprite())) {
 			asteroids[i]->SetDelete();
 			isCollision = true;
 
