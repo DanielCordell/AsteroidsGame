@@ -81,6 +81,7 @@ void Window::ChangeView() {
 	}
 	view.setViewport(sf::FloatRect(sf::FloatRect(posX, posY, sizeX, sizeY)));
 	window.setView(view);
+	*windowView = view;
 }
 
 void Window::Recreate() {

@@ -5,8 +5,8 @@
 int main() {
 	try {
 		EngineLogger::Log(EngineLogger::LOG_INFO, "Startup Initialised");
-
-		sf::Vector2u size = { 1920,1080 }; //TODO: Load from Settings
+		auto videomode = sf::VideoMode::getDesktopMode();
+		sf::Vector2u size = { videomode.width, videomode.height };
 		Engine engine("Title", size); //TODO: THIS STUFF
 		engine.Init(engine);
 		sf::Clock clock;
@@ -29,6 +29,7 @@ int main() {
 		std::cout << e.what();
 		system("pause");
 	}
+	return 0;
 }
 
 

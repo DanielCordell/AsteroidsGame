@@ -32,7 +32,7 @@ public:
 	const bool IsDone() const { return isDone; }
 	const bool IsFullscreen() const { return isFullscreen; }
 	const sf::Vector2u GetSize() const { return window.getSize(); }
-	const sf::View GetView() const { return *windowView; }
+	const sf::View GetView() const { return window.getView(); }
 	void ChangeView();
 
 	void Recreate(); // Destroys THEN Creates the window

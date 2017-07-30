@@ -13,8 +13,11 @@ private:
 	Player			player;
 	BulletHandler	bulletHandler;
 	AsteroidHandler asteroidHandler;
-	sf::Sound		shoot;
 	sw::Starfield	starfield;
+	sf::Sound		explode;
+	sf::Sound		shoot;
+	sf::Text		scoreboard;
+	sf::Clock		clock;
 public:
 	ScreenGame(Engine& eng);
 	//Setup and Destroy

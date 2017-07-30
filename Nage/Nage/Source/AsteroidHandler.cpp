@@ -3,18 +3,17 @@
 
 bool AsteroidHandler::HandleCollision(Player& player)
 {
-	bool isCollision = false;
+	if (player.IsBroken()) return false;
 	auto pBounds = player.GetBounds();
 	for (int i = 0; i < Length(); ++i) {
 		if (Collision::PixelPerfectTest(player.GetSprite(),asteroids[i]->GetSprite())) {
 			asteroids[i]->SetDelete();
-			isCollision = true;
-
 			//Create new asteroids
 			if (asteroids[i]->type == Asteroid::large || asteroids[i]->type == Asteroid::medium) SpawnAsteroids(2, asteroids[i]->type, asteroids[i]->GetPosition());
+			return true;
 		}
 	}
-	return isCollision;
+	return false;
 }
 
 void AsteroidHandler::draw(sf::RenderTarget & target, sf::RenderStates states) const {
@@ -29,7 +28,7 @@ int AsteroidHandler::HandleCollision(BulletHandler& bullets)
 	int scoreChange = 0;
 	for (int i = 0; i < Length(); ++i) {
 		for (int j = 0; j < bullets.Length(); ++j) {
-			if (bullets[j].GetBounds().intersects(asteroids[i]->GetBounds())) {
+			if (Collision::CircleTest(bullets[j].GetSprite(),asteroids[i]->GetSprite())) {
 				asteroids[i]->SetDelete();
 				bullets[j].SetDelete();
 				scoreChange += asteroids[i]->type;
