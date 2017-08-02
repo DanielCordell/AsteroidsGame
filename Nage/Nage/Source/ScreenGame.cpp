@@ -11,6 +11,7 @@ shoot(eng.SoundManager.Get(IDSound::SHOOT))
 {
 	Init();
 	scoreboard.setFont(eng.FontManager.Get(IDFont::one));
+	shotTimer = sf::Time::Zero;
 }
 
 void ScreenGame::Init() {
@@ -68,6 +69,7 @@ void ScreenGame::Update() {
 			shotTimer = sf::Time::Zero;
 		}
 		scoreboard.setString("Score: " + std::to_string(score) + "\nLives: " + std::to_string(lives));
+		clock.restart();
 	}
 	else {
 		scoreboard.setCharacterSize(60);
@@ -77,14 +79,13 @@ void ScreenGame::Update() {
 		}
 	}
 	starfield.move({ 3,4 });
-	clock.restart();
 }
 
 void ScreenGame::Draw() {
 	auto& window = engine.GetWindow();
-	window.Draw(scoreboard);
 	window.Draw(starfield);
 	window.Draw(asteroidHandler);
 	window.Draw(player);
 	window.Draw(bulletHandler);
+	window.Draw(scoreboard);
 }
