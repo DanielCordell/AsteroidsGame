@@ -7,4 +7,4 @@ You've seen it before, just a simple game of asteroids.
 
 ![Gameplay](http://i.imgur.com/mmIiBQO.png)
 
-Uses SFML.
+Uses [SFML](https://www.sfml-dev.org/).
