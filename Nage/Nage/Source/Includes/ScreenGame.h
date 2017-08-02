@@ -18,6 +18,7 @@ private:
 	sf::Sound		shoot;
 	sf::Text		scoreboard;
 	sf::Clock		clock;
+	sf::Time		shotTimer;
 public:
 	ScreenGame(Engine& eng);
 	//Setup and Destroy

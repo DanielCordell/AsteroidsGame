@@ -2,11 +2,15 @@
 #include "Includes/Window.h"
 #include "Includes/Engine.h"
 
-void ScreenMainMenu::Init() {
+void ScreenMainMenu::Init()
+{
+	title.setTexture(engine.TexManager.Get(IDTexture::TITLE));
+
+
 	tgui::Theme::Ptr theme = tgui::Theme::create("Resources/babyblue.txt");
-	auto screenSize = engine.GetWindow().GetSize();
+	sf::Vector2i screenSize = { 1920,1080 };
 	std::cout << screenSize.x << " " << screenSize.y << "\n";
-	const tgui::Layout2d buttonSize(280 / 1920.f * screenSize.x, 100 / 1080.f * screenSize.y);
+	const tgui::Layout2d buttonSize(280, 100);
 
 	//Label for Description
 	tgui::Label::Ptr label = theme->load("Label");
@@ -19,9 +23,9 @@ void ScreenMainMenu::Init() {
 	//Creating the Play Button
 	tgui::Button::Ptr play = theme->load("Button");
 	play->setSize(buttonSize);
-	play->setPosition(.1f * screenSize.x, .2f * screenSize.y);
 	play->setText("Play");
 	play->setTextSize(60 / 1920 * screenSize.x);
+	play->setPosition(screenSize.x / 2.f - play->getSize().x/2.f, screenSize.y / 2.f - play->getSize().y / 2.f);
 	play->connect("pressed", [&]()
 	{
 		engine.PushScreen(GAME);
@@ -37,20 +41,11 @@ void ScreenMainMenu::Init() {
 		l->hide();
 	}, label);
 	gui->add(play, "play");
-
-	//Creating the Settings Button
-	tgui::Button::Ptr settings = theme->load("Button");
-	settings->setSize(buttonSize);
-	settings->setTextSize(60 / 1920 * screenSize.x);
-	settings->setPosition(.1f * screenSize.x, .32f * screenSize.y > 108 ? .32f * screenSize.y : 108.f);
-	settings->setText("Settings");
-	gui->add(settings, "settings");
-
 	//Creating the Quit Button
 	tgui::Button::Ptr quit = theme->load("Button");
 	quit->setSize(buttonSize);
 	quit->setTextSize(60 / 1920 * screenSize.x);
-	quit->setPosition(.1f * screenSize.x, .32f * screenSize.y > 108 ? .44f * screenSize.y : 108.f);
+	quit->setPosition(screenSize.x / 2.f - quit->getSize().x / 2.f, screenSize.y / 2.f - quit->getSize().y / 2.f + 200);
 	quit->setText("Quit");
 
 	quit->connect("mouseentered", [](tgui::Label::Ptr& l)
@@ -90,10 +85,14 @@ void ScreenMainMenu::HandleEvents() {
 }
 
 void ScreenMainMenu::Update() {
+	starfield.move({3,4});
 }
 
 void ScreenMainMenu::Draw()  {
+	auto& window = engine.GetWindow();
+	window.Draw(starfield);
 	gui->draw();
+	window.Draw(title);
 }
 
 

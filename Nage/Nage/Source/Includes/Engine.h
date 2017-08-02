@@ -32,4 +32,5 @@ public:
 private:
 	Window window;
 	std::vector<std::unique_ptr<IScreen>> Screens;
+	sf::Music* music;
 };

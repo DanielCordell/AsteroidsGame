@@ -56,7 +56,7 @@ void AsteroidHandler::GenerateAsteroids(int numLarge, int numMed, int numSmall) 
 }
 
 void AsteroidHandler::Update() {
-	if (asteroids.empty()) GenerateAsteroids(3, 3, 3);
+	if (asteroids.empty()) GenerateAsteroids(5, 5, 5);
 	for (auto& asteroid : asteroids) asteroid->Update();
 	for (auto i = asteroids.begin(); i != asteroids.end();) {
 		if ((*i)->ShouldDelete()) i = asteroids.erase(i);

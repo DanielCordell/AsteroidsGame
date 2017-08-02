@@ -5,7 +5,7 @@
 #include "Includes/ScreenMainMenu.h"
 #include "Includes/ScreenGame.h"
 
-Engine::Engine(sf::String title, sf::Vector2u size): window(title, size) {}
+Engine::Engine(sf::String title, sf::Vector2u size): window(title, size), music(nullptr) {}
 
 void Engine::Init(Engine &)
 {
@@ -16,6 +16,7 @@ void Engine::Init(Engine &)
 	TexManager.Load(IDTexture::PLAYER, "Resources/player.png");
 	TexManager.Load(IDTexture::PLAYER_MOVE, "Resources/playermove.png");
 	TexManager.Load(IDTexture::BULLET, "Resources/bullet.png");
+	TexManager.Load(IDTexture::TITLE, "Resources/title.png");
 
 	
 	//Loading Sounds
@@ -24,14 +25,17 @@ void Engine::Init(Engine &)
 	SoundManager.Load(IDSound::EXPLODE, "Resources/explode.wav");
 
 	//Loading Music
-	//MusicManager.Load(IDMusic::one, "Resources/Test2.wav");
+	MusicManager.Load(IDMusic::one, "Resources/music.ogg");
 	
 	//Loading Fonts
 	FontManager.Load(IDFont::one, "Resources/Test.ttf");
 	
 	//Loading Shaders
 	ShaderManager.Load(IDShader::one, "Resources/Test.glsl", sf::Shader::Type::Fragment);
-
+	
+	music = &MusicManager.Get(IDMusic::one);
+	music->setVolume(50);
+	music->play();
 	MainMenu();
 }
 
@@ -74,7 +78,6 @@ void Engine::PushScreen(IScreen::Type type)
 	case IScreen::GAME:
 		Screens.push_back(std::make_unique<ScreenGame>(*this));
 		break;
-	//TODO: More Cases
 	default:
 		EngineLogger::Log(EngineLogger::LOG_WARNING, "PushScreen enum is invalid - Doing nothing");
 		break;

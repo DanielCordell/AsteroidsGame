@@ -44,7 +44,7 @@ void Window::Setup(const std::string& title, const sf::Vector2u& size) {
 	EngineLogger::Log(EngineLogger::LOG_INFO, "Initialising Window");
 	windowTitle = title;
 	windowSize = size;
-	isFullscreen = false; //TODO: Settings file
+	isFullscreen = false;
 	isDone = false;
 	Create();
 }

@@ -7,7 +7,7 @@ int main() {
 		EngineLogger::Log(EngineLogger::LOG_INFO, "Startup Initialised");
 		auto videomode = sf::VideoMode::getDesktopMode();
 		sf::Vector2u size = { videomode.width, videomode.height };
-		Engine engine("Title", size); //TODO: THIS STUFF
+		Engine engine("Title", size); 
 		engine.Init(engine);
 		sf::Clock clock;
 		sf::Time elapsedTime;

@@ -30,7 +30,7 @@ void ScreenGame::HandleEvents() {
 	Window& window = engine.GetWindow();
 	while (window.pollEvent(event)) {
 		if (event.type == sf::Event::KeyPressed) {
-			if (event.key.code == sf::Keyboard::Escape) window.Done();
+			if (event.key.code == sf::Keyboard::Escape) engine.PopScreen();
 		}
 		if (event.type == sf::Event::Closed) window.Done();
 		if (event.type == sf::Event::Resized) 
@@ -43,26 +43,41 @@ void ScreenGame::Update() {
 	bulletHandler.Update();
 	asteroidHandler.Update();
 	bool gameOver = lives <= 0;
-
-	player.Update(clock.restart());
 	if (!gameOver) {
-			score += asteroidHandler.HandleCollision(bulletHandler);
-			if (asteroidHandler.HandleCollision(player)) {
-				lives -= 1;
-				explode.play();
-				player.Break();
-			}
-		if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) && shoot.getStatus() != shoot.Playing) { //TODO change to shot timer
+		player.Update(clock.getElapsedTime());
+		int prevScore = score;
+		bool doExplode = false;
+		score += asteroidHandler.HandleCollision(bulletHandler);
+		if (score != prevScore) doExplode = true;
+		if (asteroidHandler.HandleCollision(player)) {
+			lives -= 1;
+			doExplode = true;
+			player.Hit();
+		}
+		if (doExplode) {
+			int pitchMult = DiceRoller::RollSum(1, 5);
+			explode.setPitch(pitchMult * 0.2f + 0.7f);
+			explode.play();
+		}
+		shotTimer += clock.getElapsedTime();
+		if (!player.IsRespawning() && sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && shotTimer.asMilliseconds() > 200) {
 			int pitchMult = DiceRoller::RollSum(1, 5);
 			shoot.setPitch(pitchMult * 0.1f + 0.7f);
 			shoot.play();
 			bulletHandler.CreateBullet(player.GetPosition(), 10, player.GetAngle());
+			shotTimer = sf::Time::Zero;
+		}
+		scoreboard.setString("Score: " + std::to_string(score) + "\nLives: " + std::to_string(lives));
+	}
+	else {
+		scoreboard.setCharacterSize(60);
+		scoreboard.setString("Game Over!\nFinal Score: " + std::to_string(score));
+		if (clock.getElapsedTime().asSeconds() > 3.f) {
+			engine.PopScreen();
 		}
 	}
 	starfield.move({ 3,4 });
-
-	scoreboard.setString("Score: " + std::to_string(score) + "\nLives: " + std::to_string(lives));
-
+	clock.restart();
 }
 
 void ScreenGame::Draw() {
